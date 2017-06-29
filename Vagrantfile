@@ -15,7 +15,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       precise64.vm.provider "virtualbox" do |v|
           v.memory = 1024
       end
-      precise64.vm.network "forwarded_port", guest: 80, host: 8881
+      precise64.vm.network "forwarded_port", guest: 1203, host: 8881
       precise64.vm.box = "ubuntu/precise64"
       precise64.vm.network "private_network", ip: "192.168.33.12"
       precise64.ssh.forward_agent = true
@@ -27,7 +27,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           v.memory = 1024
       end
       precise32.vm.box = "ubuntu/precise32"
-      precise32.vm.network "forwarded_port", guest: 80, host: 8882
+      precise32.vm.network "forwarded_port", guest: 1203, host: 8882
       precise32.vm.network "private_network", ip: "192.168.33.13"
       precise32.ssh.forward_agent = true
     end
@@ -38,7 +38,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           v.memory = 1024
       end
       trusty64.vm.box = "ubuntu/trusty64"
-      trusty64.vm.network "forwarded_port", guest: 80, host: 8883
+      trusty64.vm.network "forwarded_port", guest: 1203, host: 8883
       trusty64.vm.network "private_network", ip: "192.168.33.14"
       trusty64.ssh.forward_agent = true
     end
@@ -49,7 +49,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           v.memory = 1024
       end
       trusty32.vm.box = "ubuntu/trusty32"
-      trusty32.vm.network "forwarded_port", guest: 80, host: 8884
+      trusty32.vm.network "forwarded_port", guest: 1203, host: 8884
       trusty32.vm.network "private_network", ip: "192.168.33.15"
       trusty32.ssh.forward_agent = true
     end
@@ -61,7 +61,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       end
       jessie64.vm.box = "debian/jessie64"
       jessie64.ssh.forward_agent = true
-      jessie64.vm.network "forwarded_port", guest: 80, host: 8885
+      jessie64.vm.network "forwarded_port", guest: 1203, host: 8885
       jessie64.vm.network "private_network", ip: "192.168.35.18"
     end
     #Debian 8 32 bit
@@ -71,7 +71,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       end
       jessie32.vm.box = "boxcutter/debian8-i386"
       jessie32.ssh.forward_agent = true
-      jessie32.vm.network "forwarded_port", guest: 80, host: 8886
+      jessie32.vm.network "forwarded_port", guest: 1203, host: 8886
       jessie32.vm.network "private_network", ip: "192.168.33.19"
     end
 
@@ -82,7 +82,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       end
       xenial64.vm.box = "ubuntu/xenial64"
       xenial64.ssh.forward_agent = true
-      xenial64.vm.network "forwarded_port", guest: 80, host: 8887
+      xenial64.vm.network "forwarded_port", guest: 1203, host: 8887
       xenial64.vm.network "private_network", ip: "192.168.33.20"
     end
 
@@ -93,7 +93,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       end
       xenial32.vm.box = "ubuntu/xenial32"
       xenial32.ssh.forward_agent = true
-      xenial32.vm.network "forwarded_port", guest: 80, host: 8888
+      xenial32.vm.network "forwarded_port", guest: 1203, host: 8888
       xenial32.vm.network "private_network", ip: "192.168.33.21"
     end
     #Centos 7 
@@ -103,7 +103,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       end
       centos7.vm.box = "centos/7"
       centos7.ssh.forward_agent = true
-      centos7.vm.network "forwarded_port", guest: 80, host: 8888
+      centos7.vm.network "forwarded_port", guest: 1203, host: 8889
       centos7.vm.network "private_network", ip: "192.168.33.21"
     end
     #Centos 6
@@ -113,7 +113,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       end
       centos6.vm.box = "centos/6"
       centos6.ssh.forward_agent = true
-      centos6.vm.network "forwarded_port", guest: 80, host: 8888
+      centos6.vm.network "forwarded_port", guest: 1203, host: 8890
       centos6.vm.network "private_network", ip: "192.168.33.21"
     end
 end
