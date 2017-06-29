@@ -3,8 +3,11 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-    config.vm.synced_folder ".", "/root/media-node"
     config.vm.provision "shell", inline: <<-SHELL
+      pushd /root > /dev/null
+      apt install git-core
+      git clone https://github.com/bnap00/media-node.git
+      popd > /dev/null
       pushd /root/media-node > /dev/null
       /bin/bash install.sh
       popd > /dev/null
