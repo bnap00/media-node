@@ -104,7 +104,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       centos7.vm.box = "centos/7"
       centos7.ssh.forward_agent = true
       centos7.vm.network "forwarded_port", guest: 1203, host: 8889
-      centos7.vm.network "private_network", ip: "192.168.33.21"
+      centos7.vm.network "private_network", ip: "192.168.33.22"
     end
     #Centos 6
     config.vm.define "centos6" do |centos6|
@@ -114,6 +114,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       centos6.vm.box = "centos/6"
       centos6.ssh.forward_agent = true
       centos6.vm.network "forwarded_port", guest: 1203, host: 8890
-      centos6.vm.network "private_network", ip: "192.168.33.21"
+      centos6.vm.network "private_network", ip: "192.168.33.23"
     end
 end
