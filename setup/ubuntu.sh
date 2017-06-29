@@ -461,6 +461,8 @@ sudo npm install || OwnError "Unable To Install Node Module :("
 echo -e "\033[34m Clonning Media Node Repository... \e[0m"
 git clone git://github.com/bnap00/media-node.git
 cd media-node
+echo -e "\033[34m Installing node-gpy Node Module... \e[0m"
+sudo npm install -g node-gyp || OwnError "Unable To Install node-gyp Node Module :("
 echo -e "\033[34m Installing Formidable Node Module... \e[0m"
 sudo npm install formidable || OwnError "Unable To Install Formidable Node Module :("
 echo -e "\033[34m Installing Connect Node Module... \e[0m"

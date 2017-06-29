@@ -11,7 +11,7 @@
   "dependencies": {
     "connect": "2.4.x",
     "formidable": "1.0.x",
-	"sqlite3" : "3.x.x"
+	  "sqlite3" : "3.x.x"
   },
   "engines" : {
     "node" : "0.8.x",
