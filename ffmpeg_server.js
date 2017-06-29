@@ -18,6 +18,7 @@ var temp_folder = './temp/';
 var completed_folder = './completed/';
 var transcoder_port = 1203;
 var transcoder_ip = '127.0.0.1'; //This will allow the transcoding server to run locally only
+var listen_ip = transcoder_ip;
 var version = '2.0'; //version
 var server_args = process.argv.slice(2);
 for (arg in server_args){
@@ -80,7 +81,7 @@ function reQueueFiles(){
 }
 reQueueFiles();
 
-console.log('Starting FFMPEG Server on '+transcoder_ip+':'+transcoder_port);
+console.log('Starting FFMPEG Server on '+listen_ip+':'+transcoder_port);
 function queueHandler() {
     if(processing >= max_processing ){
         console.log('Max Processors already allocated');
@@ -157,7 +158,7 @@ function queueHandler() {
         
         if(current_file.output_type == 1){
             filename = basename + '.mp4';
-            var command = 'ffmpeg -i ' + queued_folder + current_file.filename + ' ' + trim_str + ' -loglevel quiet -r 24 -vcodec libx264 -vprofile high -preset slow -vf scale=640:480 -b:v 1500k -maxrate 100k -bufsize 200k -pix_fmt yuv420p -threads 1 -acodec libfaac -b:a 128k "' + temp_folder + filename + '"';
+            var command = 'ffmpeg -i ' + queued_folder + current_file.filename + ' ' + trim_str + ' -loglevel quiet -r 24 -vcodec libx264 -vprofile high -preset slow -vf scale=640:480 -b:v 1500k -maxrate 100k -bufsize 200k -pix_fmt yuv420p -threads 1 -acodec libfdk_aac  -b:a 128k "' + temp_folder + filename + '"';
             var commands = new Array();
             var thumbs = new Array();
             var interval;
@@ -521,7 +522,7 @@ connect()
             "content-type": "text/html"
         });
         res.end('The URL you are looking for is DEAD');
-    }).listen(transcoder_port,transcoder_ip,function(){
+    }).listen(transcoder_port,listen_ip,function(){
         console.log('Server Started');
     });
 	

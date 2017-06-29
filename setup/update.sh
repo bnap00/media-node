@@ -25,7 +25,7 @@ else
 
         cd /tmp
 	echo "Clonning Media Node Repository..."
-        git clone git://github.com/rtCamp/media-node.git
+        git clone git://github.com/bnap00/media-node.git
         cp -av media-node/* /root/media-node/
         cp -av media-node/.* /root/media-node/
 

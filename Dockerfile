@@ -2,8 +2,6 @@ FROM ubuntu:14.04
 
 MAINTAINER Harshad Yeola harshadyeola92@gmail.com
 
-EXPOSE 1203
-
 # Keep upstart from complaining
 RUN dpkg-divert --local --rename --add /sbin/initctl
 RUN ln -sf /bin/true /sbin/initctl
@@ -13,19 +11,28 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update
 
-RUN apt-get install -y wget curl
+RUN apt-get install -y wget curl git-core \
+ && git clone git://github.com/bnap00/media-node.git /root/media-node 
 
-ADD ./ubuntu.sh /ubuntu.sh
-RUN /bin/bash /ubuntu.sh
-
-VOLUME /root/media-node/queued /root/media-node/temp /root/media-node/completed /root/media-node/log
+COPY ./ubuntu.sh /ubuntu.sh
+RUN apt-get update && apt-get install sudo \
+ && /bin/bash /ubuntu.sh
 
 WORKDIR /root/media-node
 
-RUN npm install -g
+RUN sed -i "s/listen_ip = transcoder_ip/listen_ip = '0.0.0.0'/g" /root/media-node/ffmpeg_server.js
 
-RUN npm install formidable connect sqlite3
+RUN apt-get install -y wget curl sudo gcc g++ \
+ && curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash - \
+ && sudo apt-get -y install nodejs build-essential \
+ && npm install -g npm@latest \
+ && npm install -g node-gyp \
+ && npm install
+ 
+VOLUME /root/media-node/queued /root/media-node/temp /root/media-node/completed /root/media-node/log
 
 RUN touch /root/media-node/log/ffmpeg_server.log
 
-ENTRYPOINT ["/usr/local/bin/node", "ffmpeg_server.js"]
+EXPOSE 1203
+
+ENTRYPOINT ["/usr/bin/node", "ffmpeg_server.js"]

@@ -228,7 +228,7 @@ npm install sqlite3 || OwnError "Unable To Install Sqlite3 Node Module"
 #cp -rv $BASEDIR/.* . || OwnError "Unable To Copy Media Node Files"
 clear
 cd /tmp
-git clone git://github.com/rtCamp/media-node.git
+git clone git://github.com/bnap00/media-node.git
 cp -rv  media-node/* $MNDIR/ || OwnError "Unable To Copy Media Node Files :("
 cp -rv  media-node/.git $MNDIR/ || OwnError "Unable To Copy Media Node Files :("
 #cd $MNDIR
