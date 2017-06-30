@@ -372,13 +372,13 @@ then
 		#Ubuntu8.04 Desktop
 		./configure --enable-gpl --enable-version3 --enable-nonfree --enable-libfdk-aac \
 		--enable-libmp3lame --enable-libtheora --enable-libvorbis --enable-libvpx \
-		--enable-libx264 --enable-x11grab \
+		--enable-libx264 --enable-x11grab --enable-ffplay \
 		|| OwnError "Unable To Configure FFmpeg For $Version Desktop :("
 	else
 		#Ubuntu8.04 Server
 		./configure --enable-gpl --enable-version3 --enable-nonfree --enable-libfdk-aac \
 		--enable-libmp3lame --enable-libtheora --enable-libvorbis --enable-libvpx \
-		--enable-libx264 \
+		--enable-libx264 --enable-ffplay \
 		|| OwnError "Unable To Configure FFmpeg For $Version Server :("
 	fi
 
@@ -394,13 +394,13 @@ then
 		#Ubuntu 10.04 Desktop
 		./configure --enable-gpl --enable-libfdk-aac --enable-libmp3lame --enable-libopencore-amrnb \
 		--enable-libopencore-amrwb --enable-libtheora --enable-libvorbis --enable-libvpx \
-		--enable-libx264 --enable-nonfree --enable-version3 --enable-x11grab \
+		--enable-libx264 --enable-nonfree --enable-version3 --enable-x11grab --enable-ffplay \
 		|| OwnError "Unable To Configure FFmpeg For $Version Desktop :("
 	else
 		#Ubuntu10.04 Server
 		./configure --enable-gpl --enable-libfdk-aac --enable-libmp3lame --enable-libopencore-amrnb \
 		--enable-libopencore-amrwb --enable-libtheora --enable-libvorbis --enable-libvpx \
-		--enable-libx264 --enable-nonfree --enable-version3 \
+		--enable-libx264 --enable-nonfree --enable-version3  --enable-ffplay \
 		|| OwnError "Unable To Configure FFmpeg For $Version Server :("
 	fi
 
@@ -417,17 +417,17 @@ then
 		./configure --enable-gpl --enable-libfdk-aac --enable-libmp3lame \
 		--enable-libopencore-amrnb --enable-libopencore-amrwb --enable-librtmp --enable-libtheora \
 		--enable-libvorbis --enable-libvpx --enable-x11grab --enable-libx264 --enable-nonfree \
-		--enable-version3 \
+		--enable-version3 --enable-ffplay \
 		|| OwnError "Unable To Configure FFmpeg For $Version Desktop :("
 	else
 		# Ubuntu Server
 		./configure --enable-gpl --enable-libfdk-aac --enable-libmp3lame \
 		--enable-libopencore-amrnb --enable-libopencore-amrwb --enable-librtmp --enable-libtheora \
 		--enable-libvorbis --enable-libvpx --enable-libx264 --enable-nonfree \
-		--enable-version3 \
+		--enable-version3 --enable-ffplay \
 		|| OwnError "Unable To Configure FFmpeg For $Version Server :("
 	fi
-
+	echo "CONFIG_FFPLAY=yes" >> ./ffbuild/config.mak
 	make
 	sudo checkinstall --pkgname=ffmpeg --pkgversion="5:$(date +%Y%m%d%H%M)-git" --backup=no \
 	--deldoc=yes --fstrans=no --default \
