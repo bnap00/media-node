@@ -110,15 +110,15 @@ clear
 if [ $Version = Ubuntu804 ]
 then
 	echo -e "\033[34m Removing Unwanted Softwares From $Version... \e[0m"
-	sudo apt-get -y remove ffmpeg x264 libx264-dev yasm liblame-dev libsdl2-dev sudo
+	sudo apt-get -y remove ffmpeg x264 libx264-dev yasm liblame-dev libsdl2-dev
 elif [ $Version = Ubuntu1004 ]
 then
 	echo -e "\033[34m Removing Unwanted Softwares From $Version... \e[0m"
-	sudo apt-get -y remove ffmpeg x264 libx264-dev yasm libmp3lame-dev libsdl2-dev sudo
+	sudo apt-get -y remove ffmpeg x264 libx264-dev yasm libmp3lame-dev libsdl2-dev
 elif [ $Version = Ubuntu1010 ] || [ $Version = Ubuntu1104 ] || [ $Version = Ubuntu1110 ] || [ $Version = Ubuntu1204 ] || [ $Version = Ubuntu1404 ] || [ $Version = Ubuntu1604 ]
 then
 	echo -e "\033[34m Removing Unwanted Softwares From $Version... \e[0m"
-	sudo apt-get -y remove ffmpeg x264 libav-tools libvpx-dev libx264-dev libsdl2-dev sudo
+	sudo apt-get -y remove ffmpeg x264 libav-tools libvpx-dev libx264-dev libsdl2-dev
 fi
 
 if [ $Version = Ubuntu1010 ] || [ $Version = Ubuntu1104 ] || [ $Version = Ubuntu1110 ] || [ $Version = Ubuntu1204 ] || [ $Version = Ubuntu1404 ] || [ $Version = Ubuntu1604 ]
