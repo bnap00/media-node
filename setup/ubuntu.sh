@@ -364,7 +364,7 @@ cd $MNDIR
 echo -e "\033[34m  Cloning FFmpeg Repo... \e[0m"
 git clone https://git.ffmpeg.org/ffmpeg.git ffmpeg || OwnError "Unable To Clonning FFmpeg Repository:("
 cd ffmpeg
-sudo apt-get install libsdl2-dev
+sudo apt-get -y install libsdl2-dev
 
 if [ $Version = Ubuntu804 ]
 then
