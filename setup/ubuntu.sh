@@ -151,13 +151,13 @@ then
 		echo -e "\033[34m  Installing Packages For $Version Desktop \e[0m"
 		sudo apt-get -y install build-essential git-core checkinstall texi2html \
 		libvorbis-dev libx11-dev libxext-dev libxfixes-dev pkg-config zlib1g-dev \
-		nasm libogg-dev curl libsdl2-dev \
+		nasm libogg-dev curl \
 		|| OwnError "$Version Desktop Installation Failed :("
 	else
 		# Ubuntu8.04 Server
 		echo -e "\033[34m  Installing Packages For $Version Server \e[0m"
 		sudo apt-get -y install build-essential git-core checkinstall texi2html \
-		libvorbis-dev pkg-config zlib1g-dev nasm libogg-dev curl libsdl2-dev \
+		libvorbis-dev pkg-config zlib1g-dev nasm libogg-dev curl \
 		|| OwnError "$Version Server Installation Failed :("
 	fi
 elif [ $Version = Ubuntu1004 ]
@@ -168,14 +168,14 @@ then
 		echo -e "\033[34m  Installing Packages For $Version Desktop \e[0m"
 		sudo apt-get install -y build-essential git-core checkinstall texi2html \
 		libopencore-amrnb-dev libopencore-amrwb-dev libtheora-dev \
-		libvorbis-dev libx11-dev libxfixes-dev pkg-config zlib1g-dev nasm libsdl2-dev \
+		libvorbis-dev libx11-dev libxfixes-dev pkg-config zlib1g-dev nasm \
 		|| OwnError "$Version Desktop Installation Failed :("
 	else
 		# Ubuntu10.04  Server
 		echo -e "\033[34m  Installing Packages For $Version Server \e[0m"
 		sudo apt-get install -y build-essential git-core checkinstall texi2html \
 		libopencore-amrnb-dev libopencore-amrwb-dev libtheora-dev libvorbis-dev pkg-config zlib1g-dev \
-		nasm libsdl2-dev \
+		nasm \
 		|| OwnError "$Version Server Installation Failed :("
 	fi
 elif [ $Version = Ubuntu1010 ] || [ $Version = Ubuntu1104 ] || [ $Version = Ubuntu1110 ] || [ $Version = Ubuntu1204 ] || [ $Version = Ubuntu1404 ]
@@ -188,7 +188,7 @@ then
 		sudo apt-get -y install autoconf build-essential checkinstall git libgpac-dev \
 		libjack-jackd2-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev \
 		librtmp-dev libtheora-dev libtool libva-dev libvdpau-dev libvorbis-dev \
-		libx11-dev libxfixes-dev pkg-config texi2html zlib1g-dev libsdl2-dev \
+		libx11-dev libxfixes-dev pkg-config texi2html zlib1g-dev \
 		|| OwnError "$Version Desktop Installation Failed :("
 	else
 
@@ -196,10 +196,18 @@ then
 		echo -e "\033[34m  Installing Packages For $Version Desktop \e[0m"
 		sudo apt-get -y install autoconf build-essential checkinstall git libgpac-dev \
 		libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev librtmp-dev libtheora-dev \
-		libtool libvorbis-dev pkg-config texi2html yasm zlib1g-dev libsdl2-dev \
+		libtool libvorbis-dev pkg-config texi2html yasm zlib1g-dev \
 		|| OwnError "$Version Server Installation Failed :("
 	fi
 fi
+
+echo -e "\033[34m  Installing SDL2 For $Version \e[0m"
+wget -c http://www.libsdl.org/release/SDL2-2.0.5.tar.gz
+tar -xf SDL2-2.0.5.tar.gz
+cd SDL2-2.0.5
+./configure || OwnError "Cannot configure SDL2"
+make || OwnError "Cannot install SDL2"
+cd ..
 
 
 # Making Directory For Cloning Encoders
